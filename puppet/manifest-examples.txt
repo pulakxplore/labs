@@ -206,7 +206,7 @@ cd tomcat/manifests
 
 vi setup_user.pp
 
-calss tomcat::setup_user {
+class tomcat::setup_user {
 
 	group { 'tomcat':
 		name => 'tomcat',
@@ -230,3 +230,13 @@ class tomcat {
   class {'tomcat::setup_user':}
 
 }
+
+and then call tomcat class from site.pp under manifest folder
+
+root@puppetmaster:/etc/puppetlabs/code/environments/qa/manifests# ll
+total 12
+drwxr-xr-x 2 root root 4096 Oct  9 16:05 ./
+drwxr-xr-x 5 root root 4096 Oct  9 16:12 ../
+-rwxr-xr-x 1 root root   18 Oct  9 16:05 site.pp*
+root@puppetmaster:/etc/puppetlabs/code/environments/qa/manifests# cat site.pp 
+class {'tomcat':}
